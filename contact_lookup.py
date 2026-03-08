@@ -28,17 +28,16 @@ def format_contact(contact):
 
     phones = contact.get("phones", {})
 
-    landlines = phones.get("landline", [])
-    mobiles = phones.get("mobile", [])
+    for phone_type, numbers in phones.items():
 
-    if landlines:
-        message += "\n☎ Landline\n"
-        for num in landlines:
-            message += f"{num}\n"
+        if not numbers:
+            continue
 
-    if mobiles:
-        message += "\n📱 Mobile\n"
-        for num in mobiles:
+        title = phone_type.replace("_", " ").title()
+
+        message += f"\n☎ {title}\n"
+
+        for num in numbers:
             message += f"{num}\n"
 
     if contact.get("available_24_7"):
