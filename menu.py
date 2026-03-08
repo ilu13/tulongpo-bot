@@ -23,13 +23,32 @@ def main_menu():
         {
             "content_type": "text",
             "title": "🧠 Mental Health",
-            "payload": "mental health"
+            "payload": "mental_health"
+        }
+
+    ]
+
+
+def location_menu(emergency_type):
+
+    return [
+
+        {
+            "content_type": "text",
+            "title": "📍 Makati",
+            "payload": f"{emergency_type}|makati"
         },
 
         {
             "content_type": "text",
-            "title": "👩‍👧 Women & Children",
-            "payload": "women_children"
+            "title": "🇵🇭 National",
+            "payload": f"{emergency_type}|national"
+        },
+
+        {
+            "content_type": "text",
+            "title": "🏙 Other City",
+            "payload": "other_city"
         }
 
     ]
