@@ -76,7 +76,48 @@ CONTACTS = {
         }
     },
 
+    "makati": {
 
+        "police": {
+            "name": "Makati City Police Station",
+            "agency": "PNP",
+            "available_24_7": True,
+            "description": "Makati Police emergency contact",
+            "coverage": "Makati City",
+            "phones": {
+                "landline": ["8882-8888"],
+                "mobile": []
+            },
+            "source": "Makati LGU",
+            "notes": "For Makati police emergencies"
+        },
+
+        "fire": {
+            "name": "Makati Fire Station",
+            "agency": "BFP",
+            "available_24_7": True,
+            "description": "Makati Fire emergency contact",
+            "coverage": "Makati City",
+            "phones": {
+                "landline": ["8818-5150"],
+                "mobile": []
+            },
+            "source": "BFP",
+            "notes": "For Makati fire emergencies"
+        },
+
+        "ambulance": {
+            "name": "Makati Emergency Medical Services",
+            "agency": "Makati LGU",
+            "available_24_7": True,
+            "description": "Makati ambulance services",
+            "coverage": "Makati City",
+            "phones": {
+                "landline": ["168"],
+                "mobile": []
+            },
+            "source": "Makati LGU",
+            "notes": "Emergency medical assistance"
 
     "quezon_city": {
 
