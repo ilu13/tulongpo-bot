@@ -1,25 +1,19 @@
 from contacts import CONTACTS
 
 
-def get_contact(location, emergency_type):
+def get_contact(location: str, emergency_type: str):
+    if location in CONTACTS and emergency_type in CONTACTS[location]:
+        return CONTACTS[location][emergency_type]
 
-    # try location first
-    if location in CONTACTS:
-        if emergency_type in CONTACTS[location]:
-            return CONTACTS[location][emergency_type]
-
-    # fallback to national
-    if "national" in CONTACTS:
-        if emergency_type in CONTACTS["national"]:
-            return CONTACTS["national"][emergency_type]
+    if "national" in CONTACTS and emergency_type in CONTACTS["national"]:
+        return CONTACTS["national"][emergency_type]
 
     return None
 
 
 def format_contact(contact):
-
     if not contact:
-        return "Sorry, I couldn't find that emergency contact."
+        return "Pasensya na, wala akong mahanap na contact para diyan."
 
     message = f"🚨 {contact['name']}\n"
 
@@ -27,7 +21,6 @@ def format_contact(contact):
         message += f"{contact['description']}\n"
 
     phones = contact.get("phones", {})
-
     landlines = phones.get("landline", [])
     mobiles = phones.get("mobile", [])
 
