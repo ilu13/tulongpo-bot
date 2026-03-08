@@ -4,19 +4,19 @@ def main_menu():
 
         {
             "content_type": "text",
-            "title": "🚓 Police",
+            "title": "🚓 Pulis",
             "payload": "police"
         },
 
         {
             "content_type": "text",
-            "title": "🚑 Ambulance",
+            "title": "🚑 Ambulansya",
             "payload": "ambulance"
         },
 
         {
             "content_type": "text",
-            "title": "🔥 Fire",
+            "title": "🔥 Sunog",
             "payload": "fire"
         },
 
@@ -24,31 +24,12 @@ def main_menu():
             "content_type": "text",
             "title": "🧠 Mental Health",
             "payload": "mental_health"
-        }
-
-    ]
-
-
-def location_menu(emergency_type):
-
-    return [
-
-        {
-            "content_type": "text",
-            "title": "📍 Makati",
-            "payload": f"{emergency_type}|makati"
         },
 
         {
             "content_type": "text",
-            "title": "🇵🇭 National",
-            "payload": f"{emergency_type}|national"
-        },
-
-        {
-            "content_type": "text",
-            "title": "🏙 Other City",
-            "payload": "other_city"
+            "title": "👩‍👧 Kababaihan at Bata",
+            "payload": "women_children"
         }
 
     ]
