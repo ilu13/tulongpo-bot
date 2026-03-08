@@ -4,12 +4,6 @@ def main_menu():
 
         {
             "content_type": "text",
-            "title": "🚨 Emergency Mode",
-            "payload": "emergency_mode"
-        },
-
-        {
-            "content_type": "text",
             "title": "🚓 Pulis",
             "payload": "police"
         },
@@ -61,37 +55,6 @@ def location_menu(emergency_type):
             "content_type": "text",
             "title": "🏙 Other City",
             "payload": "other_city"
-        }
-
-    ]
-
-
-def emergency_menu():
-
-    return [
-
-        {
-            "content_type": "text",
-            "title": "🚓 Pulis",
-            "payload": "police"
-        },
-
-        {
-            "content_type": "text",
-            "title": "🚑 Ambulansya",
-            "payload": "ambulance"
-        },
-
-        {
-            "content_type": "text",
-            "title": "🔥 Sunog",
-            "payload": "fire"
-        },
-
-        {
-            "content_type": "text",
-            "title": "🇵🇭 Pambansang Hotline",
-            "payload": "national_hotline"
         }
 
     ]
