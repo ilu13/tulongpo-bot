@@ -1,18 +1,25 @@
+from contacts import CONTACTS
+
+
 def get_response(text):
 
     text = text.lower()
 
     if "police" in text:
-        return "🚓 Philippine National Police\n📞 Dial 911"
+        c = CONTACTS["police"]
+        return f"🚓 {c['name']}\n📞 {c['number']}"
 
     elif "ambulance" in text:
-        return "🚑 Emergency Medical Services\n📞 Dial 911"
+        c = CONTACTS["ambulance"]
+        return f"🚑 {c['name']}\n📞 {c['number']}"
 
     elif "fire" in text:
-        return "🔥 Bureau of Fire Protection\n📞 Dial 911"
+        c = CONTACTS["fire"]
+        return f"🔥 {c['name']}\n📞 {c['number']}"
 
     elif "mental" in text:
-        return "🧠 Mental Health Crisis Hotline\n📞 1553"
+        c = CONTACTS["mental_health"]
+        return f"🧠 {c['name']}\n📞 {c['number']}"
 
     else:
         return (
