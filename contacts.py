@@ -118,6 +118,8 @@ CONTACTS = {
             },
             "source": "Makati LGU",
             "notes": "Emergency medical assistance"
+        }
+    },
 
     "quezon_city": {
 
