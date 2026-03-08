@@ -33,16 +33,20 @@ INTENT_ALIASES = {
 
     "mental_health": [
         "mental",
+        "mental health",
         "suicide",
-        "depressed",
-        "tulong"
+        "depressed"
     ],
 
     "women_children": [
         "abuse",
         "violence",
         "rape",
-        "trafficking"
+        "trafficking",
+        "kababaihan",
+        "bata",
+        "women",
+        "children"
     ]
 }
 
@@ -55,9 +59,31 @@ LOCATION_ALIASES = {
         "makati",
         "makati city",
         "mkt"
+    ],
+
+    "quezon_city": [
+        "qc",
+        "q.c.",
+        "quezon city"
+    ],
+
+    "manila": [
+        "manila",
+        "city of manila"
     ]
 
 }
+
+
+# -------- HELP WORDS --------
+
+HELP_WORDS = [
+    "help",
+    "menu",
+    "start",
+    "hello",
+    "hi"
+]
 
 
 # -------- INTENT DETECTOR --------
@@ -92,11 +118,34 @@ def detect_location(text):
     return "national"
 
 
+# -------- HELP MESSAGE --------
+
+def get_help_message():
+
+    return (
+        "Maaari kitang tulungan hanapin ang tamang emergency contact.\n\n"
+        "Subukang i-type ang:\n"
+        "🚓 pulis\n"
+        "🔥 sunog\n"
+        "🚑 ambulansya\n"
+        "🧠 mental health\n"
+        "👩‍👧 proteksyon sa kababaihan\n\n"
+        "Pwede rin lagyan ng lugar, halimbawa:\n"
+        "• sunog makati\n"
+        "• sunog qc\n"
+        "• pulis manila\n"
+        "• ambulansya makati"
+    )
+
+
 # -------- MAIN RESPONSE FUNCTION --------
 
 def get_response(text):
 
-    text = text.lower()
+    text = text.lower().strip()
+
+    if text in HELP_WORDS:
+        return get_help_message()
 
     location = detect_location(text)
 
@@ -108,13 +157,4 @@ def get_response(text):
 
         return format_contact(contact)
 
-    return (
-        "I can help you find emergency contacts.\n\n"
-        "Try typing:\n"
-        "🚓 police\n"
-        "🔥 fire\n"
-        "🚑 ambulance\n"
-        "🧠 mental health\n\n"
-        "You can also include a city like:\n"
-        "fire makati"
-    )
+    return get_help_message()
