@@ -9,7 +9,7 @@ app = FastAPI()
 VERIFY_TOKEN = "tulongpo_verify_123"
 
 # Get token from environment variable (safer)
-PAGE_ACCESS_TOKEN = os.getenv("EAFxzvx2kfu4BQZCKnSsWt63dk15PksJyhbI0dCWcsbNxfDKaZCQdlikUg6xwzXsOAjBKq0JuRa9r9P7ZB8RAyz4ZA9bLXdBx2mXBaYNEngj7P8bSTgCRvce9HbK3FqYZA6wj69fngqzHstQURSlQ9SZBSygJJuDqa5NpkuDNKWREQhm44K3ZAwZAa0s2PmIvhSbHc7zatiFPb44QS9IoFLlZA9OwZD")
+PAGE_ACCESS_TOKEN = os.getenv("PAGE_ACCESS_TOKEN")
 
 
 @app.get("/")
