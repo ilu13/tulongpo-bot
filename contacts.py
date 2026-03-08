@@ -85,8 +85,8 @@ CONTACTS = {
             "description": "Makati Police emergency contact",
             "coverage": "Makati City",
             "phones": {
-                "landline": ["8882-8888"],
-                "mobile": []
+                "landline": ["+63-2-8887-1798"],
+                "mobile": ["0929-7936525"]
             },
             "source": "Makati LGU",
             "notes": "For Makati police emergencies"
@@ -99,7 +99,7 @@ CONTACTS = {
             "description": "Makati Fire emergency contact",
             "coverage": "Makati City",
             "phones": {
-                "landline": ["8818-5150"],
+                "landline": ["+63-2-8818-5150", "+63-2-8816-2553"],
                 "mobile": []
             },
             "source": "BFP",
@@ -114,13 +114,13 @@ CONTACTS = {
             "coverage": "Makati City",
             "phones": {
                 "emergency_dispatch": [
-                    "168",
-                    "8236-5790"
+                    ""+63-2-8236-5790"
                 ],
                 "makati_medical_center": [
-                    "8888-8910"
+                    "+632-8888-8910"
                 ],
-                "mobile": []
+                "mobile": [],
+                "ospital_ng_makati":["+63-2-8882-6316 to 36"]
             },
             "source": "Makati LGU / Makati Medical Center",
             "notes": "168 connects to Makati C3 emergency dispatch. Makati Medical Center ambulance line included."
