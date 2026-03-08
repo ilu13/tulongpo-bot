@@ -28,7 +28,7 @@ def main_menu():
 
         {
             "content_type": "text",
-            "title": "👩‍👧 Kababaihan at Bata",
+            "title": "👩‍👧 Proteksyon sa Kababaihan",
             "payload": "women_children"
         }
 
