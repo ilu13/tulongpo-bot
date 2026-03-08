@@ -107,17 +107,23 @@ CONTACTS = {
         },
 
         "ambulance": {
-            "name": "Makati Emergency Medical Services",
+            "name": "Makati Command Control Center (C3)",
             "agency": "Makati LGU",
             "available_24_7": True,
-            "description": "Makati ambulance services",
+            "description": "Central emergency dispatch for ambulance, police, and fire",
             "coverage": "Makati City",
             "phones": {
-                "landline": ["168"],
+                "emergency_dispatch": [
+                    "168",
+                    "8236-5790"
+                ],
+                "makati_medical_center": [
+                    "8888-8910"
+                ],
                 "mobile": []
             },
-            "source": "Makati LGU",
-            "notes": "Emergency medical assistance"
+            "source": "Makati LGU / Makati Medical Center",
+            "notes": "168 connects to Makati C3 emergency dispatch. Makati Medical Center ambulance line included."
         }
     },
 
