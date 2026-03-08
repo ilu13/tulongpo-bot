@@ -3,7 +3,8 @@ import requests
 import os
 
 from responses import get_response
-from menu import main_menu
+from contact_lookup import get_contact, format_contact
+from menu import main_menu, location_menu
 
 app = FastAPI()
 
@@ -18,6 +19,7 @@ def home():
 
 @app.get("/webhook")
 async def verify(request: Request):
+
     params = request.query_params
 
     if (
@@ -57,27 +59,61 @@ async def webhook(request: Request):
             if "message" in messaging_event:
 
                 message_obj = messaging_event["message"]
+
                 text = message_obj.get("text", "")
 
-                # Detect quick reply tap
+                # --- QUICK REPLY HANDLING ---
+
                 if "quick_reply" in message_obj:
+
                     payload = message_obj["quick_reply"]["payload"]
 
-                    reply = get_response(payload)
+                    # --- SECOND STEP: LOCATION SELECTED ---
 
-                    send_message(sender_id, reply, main_menu())
+                    if "|" in payload:
+
+                        emergency_type, location = payload.split("|")
+
+                        contact = get_contact(location, emergency_type)
+
+                        reply = format_contact(contact)
+
+                        send_message(sender_id, reply, main_menu())
+
+                    # --- FIRST STEP: CATEGORY SELECTED ---
+
+                    elif payload in ["police", "fire", "ambulance", "mental_health"]:
+
+                        contact = get_contact("national", payload)
+
+                        reply = format_contact(contact)
+
+                        send_message(
+                            sender_id,
+                            reply + "\n\nDo you need a city-specific hotline?",
+                            location_menu(payload)
+                        )
+
+                    else:
+
+                        send_message(sender_id, "Sorry, I didn't understand.", main_menu())
+
+                # --- NORMAL TEXT INPUT ---
 
                 else:
 
-                    if text.lower() in ["hi", "hello", "start", "menu", "help"]:
+                    if text.lower() in ["hi", "hello", "menu", "start", "help"]:
+
                         send_message(
                             sender_id,
-                            "Kumusta! I can help you find the right emergency contact. Choose one:",
+                            "Kumusta! I can help you find emergency contacts.",
                             main_menu()
                         )
 
                     else:
+
                         reply = get_response(text)
+
                         send_message(sender_id, reply, main_menu())
 
     return {"status": "ok"}
