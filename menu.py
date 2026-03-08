@@ -1,24 +1,35 @@
 def main_menu():
 
     return [
+
         {
             "content_type": "text",
             "title": "🚓 Police",
-            "payload": "POLICE"
+            "payload": "police"
         },
+
         {
             "content_type": "text",
             "title": "🚑 Ambulance",
-            "payload": "AMBULANCE"
+            "payload": "ambulance"
         },
+
         {
             "content_type": "text",
             "title": "🔥 Fire",
-            "payload": "FIRE"
+            "payload": "fire"
         },
+
         {
             "content_type": "text",
             "title": "🧠 Mental Health",
-            "payload": "MENTAL_HEALTH"
+            "payload": "mental health"
+        },
+
+        {
+            "content_type": "text",
+            "title": "👩‍👧 Women & Children",
+            "payload": "women_children"
         }
+
     ]
