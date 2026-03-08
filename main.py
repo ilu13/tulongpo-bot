@@ -82,7 +82,7 @@ async def webhook(request: Request):
 
                     # --- FIRST STEP: CATEGORY SELECTED ---
 
-                    elif payload in ["police", "fire", "ambulance", "mental_health"]:
+                    elif payload in ["police", "fire", "ambulance", "mental_health", "women_children"]:
 
                         contact = get_contact("national", payload)
 
