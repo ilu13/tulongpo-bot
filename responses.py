@@ -16,10 +16,6 @@ def get_response(text):
 
     else:
         return (
-            "Salamat! I can help you find emergency contacts.\n\n"
-            "Type:\n"
-            "🚓 police\n"
-            "🚑 ambulance\n"
-            "🔥 fire\n"
-            "🧠 mental health"
+            "I can help you find emergency contacts.\n\n"
+            "Choose one below."
         )
