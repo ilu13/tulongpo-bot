@@ -3,23 +3,21 @@ import requests
 import os
 
 from responses import get_response
+from menu import main_menu
 
 app = FastAPI()
 
 VERIFY_TOKEN = "tulongpo_verify_123"
-
-# Get token from environment variable (safer)
 PAGE_ACCESS_TOKEN = os.getenv("PAGE_ACCESS_TOKEN")
 
 
 @app.get("/")
 def home():
-    return {"status": "Tulong Po Bot is running"}
+    return {"status": "Tulong Po bot running"}
 
 
 @app.get("/webhook")
 async def verify(request: Request):
-
     params = request.query_params
 
     if (
@@ -29,6 +27,21 @@ async def verify(request: Request):
         return int(params.get("hub.challenge"))
 
     return {"status": "error"}
+
+
+def send_message(recipient_id, text, quick_replies=None):
+
+    url = f"https://graph.facebook.com/v18.0/me/messages?access_token={PAGE_ACCESS_TOKEN}"
+
+    payload = {
+        "recipient": {"id": recipient_id},
+        "message": {"text": text}
+    }
+
+    if quick_replies:
+        payload["message"]["quick_replies"] = quick_replies
+
+    requests.post(url, json=payload)
 
 
 @app.post("/webhook")
@@ -43,22 +56,28 @@ async def webhook(request: Request):
 
             if "message" in messaging_event:
 
-                text = messaging_event["message"].get("text", "")
+                message_obj = messaging_event["message"]
+                text = message_obj.get("text", "")
 
-                reply = get_response(text)
+                # Detect quick reply tap
+                if "quick_reply" in message_obj:
+                    payload = message_obj["quick_reply"]["payload"]
 
-                send_message(sender_id, reply)
+                    reply = get_response(payload)
+
+                    send_message(sender_id, reply, main_menu())
+
+                else:
+
+                    if text.lower() in ["hi", "hello", "start", "menu", "help"]:
+                        send_message(
+                            sender_id,
+                            "Kumusta! I can help you find the right emergency contact. Choose one:",
+                            main_menu()
+                        )
+
+                    else:
+                        reply = get_response(text)
+                        send_message(sender_id, reply, main_menu())
 
     return {"status": "ok"}
-
-
-def send_message(recipient_id, text):
-
-    url = f"https://graph.facebook.com/v18.0/me/messages?access_token={PAGE_ACCESS_TOKEN}"
-
-    payload = {
-        "recipient": {"id": recipient_id},
-        "message": {"text": text}
-    }
-
-    requests.post(url, json=payload)
