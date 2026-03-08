@@ -114,7 +114,7 @@ CONTACTS = {
             "coverage": "Makati City",
             "phones": {
                 "emergency_dispatch": [
-                    ""+63-2-8236-5790"
+                    "+63-2-8236-5790"
                 ],
                 "makati_medical_center": [
                     "+632-8888-8910"
